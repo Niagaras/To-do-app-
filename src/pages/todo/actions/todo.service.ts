@@ -1,7 +1,8 @@
 import axiosInstance from '../../../core/configs/axios.config';
-import { Task } from '../models/todo.model';
+import { API } from '../../../core/configs/api.config';
+import { Task } from '../todo';
 
-const API_BASE = '/tasks'; 
+const API_BASE = API.tasks;
 
 export const fetchTasks = async (): Promise<Task[]> => {
     const response = await axiosInstance.get(API_BASE);

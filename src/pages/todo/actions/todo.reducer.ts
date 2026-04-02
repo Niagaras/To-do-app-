@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { EditState, Task } from '../models/todo.model';
+import { EditState, Task } from '../todo';
 
 const initialState: EditState = {
     editingTask: null,

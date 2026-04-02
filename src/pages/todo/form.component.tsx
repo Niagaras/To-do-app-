@@ -1,12 +1,13 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useStyles } from './todo.styles';
-import { createTask, updateTask } from '../actions/todo.service';
 import { useEffect, useState } from 'react';
-import { Task, TaskStatus } from '../models/todo.model';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEditingTask } from '../../../store/store.reducer';
-import { RootState } from '../../../store/store.config';
+import { setEditingTask } from '../../store/store.reducer';
+import { RootState } from '../../store/store.config';
 import { en } from 'assets/lang/en';
+import { Task, TaskStatus } from './todo';
+import { useStyles } from './todo.styles';
+import { useCreateTask, useUpdateTask } from './actions/useTaskMutations';
+import SimpleInput from '../../core/shared/input/simple-input.component';
+import Button from '../../core/shared/button/button.component';
 
 const TaskForm = () => {
     const classes = useStyles();
@@ -15,9 +16,12 @@ const TaskForm = () => {
     const [status, setStatus] = useState<TaskStatus>('todo');
     const [date, setDate] = useState('');
 
+    const classes = useStyles();
     const dispatch = useDispatch();
     const editingTask = useSelector((state: RootState) => state.editingTask.editingTask);
-    const queryClient = useQueryClient();
+
+    const createTaskMutation = useCreateTask();
+    const updateTaskMutation = useUpdateTask();
 
     useEffect(() => {
         if (editingTask) {
@@ -33,25 +37,6 @@ const TaskForm = () => {
         }
     }, [editingTask]);
 
-    const addMutation = useMutation({
-        mutationFn: createTask,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['tasks'] });
-            setTitle('');
-            setDescription('');
-            setStatus('todo');
-            setDate('');
-        },
-    });
-
-    const updateMutation = useMutation({
-        mutationFn: updateTask,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['tasks'] });
-            dispatch(setEditingTask(null));
-        },
-    });
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!title) return;
@@ -61,16 +46,25 @@ const TaskForm = () => {
             status,
             date: date || new Date().toISOString(),
         };
+
         if (editingTask) {
-            updateMutation.mutate({ ...payload, id: editingTask.id });
+            updateTaskMutation.mutate({ ...payload, id: editingTask.id });
+            dispatch(setEditingTask(null));
         } else {
-            addMutation.mutate(payload);
+            createTaskMutation.mutate(payload, {
+                onSuccess: () => {
+                    setTitle('');
+                    setDescription('');
+                    setStatus('todo');
+                    setDate('');
+                },
+            });
         }
     };
 
     return (
         <form className={classes.taskForm} onSubmit={handleSubmit}>
-            <input
+            <SimpleInput
                 value={title}
                 type="text"
                 placeholder={en.task_title}
@@ -90,7 +84,7 @@ const TaskForm = () => {
             </select>
             <label>
                 {en.date}
-                <input
+                <SimpleInput
                     value={date}
                     type="date"
                     onChange={(e) => setDate(e.target.value)}
@@ -98,19 +92,12 @@ const TaskForm = () => {
                 />
             </label>
             <div className={classes.actions}>
-                <button
-                    type="submit"
-                    className={classes.submitButton}
-                >
+                <Button type="submit" variant="success">
                     {editingTask ? en.save : en.add}
-                </button>
-                <button
-                    type="button"
-                    className={classes.button}
-                    onClick={() => dispatch(setEditingTask(null))}
-                >
-                   {en.cancel}
-                </button>
+                </Button>
+                <Button type="button" variant="secondary" onClick={() => dispatch(setEditingTask(null))}>
+                    {en.cancel}
+                </Button>
             </div>
         </form>
     );

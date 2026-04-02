@@ -1,10 +1,26 @@
 import { createUseStyles } from 'react-jss';
+import colors from '../../assets/styles/abstracts/color';
 
 export const useStyles = createUseStyles({
+    pageTitle: {
+        textAlign: 'center',
+        color: colors.darkBlue,
+        marginTop: '20px',
+    },
     container: {
         display: 'flex',
         gap: '20px',
         padding: '20px',
+    },
+    loading: {
+        padding: 20,
+        color: colors.main,
+        textAlign: 'center',
+    },
+    error: {
+        padding: 20,
+        color: colors.alertDanger,
+        textAlign: 'center',
     },
     submitButton: {
         backgroundColor: 'green',
@@ -19,6 +35,12 @@ export const useStyles = createUseStyles({
         padding: '5px 10px', 
         borderRadius: '5px', 
         cursor: 'pointer' 
+    },
+    editButton: {
+        backgroundColor: 'yellow', 
+        padding: '5px 10px', 
+        borderRadius: '5px', 
+        cursor: 'pointer'
     },
     column: {
         flex: 1,

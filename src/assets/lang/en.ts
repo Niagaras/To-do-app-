@@ -24,6 +24,8 @@ export const en = {
     // task form
     add: 'Add',
     save: 'Save',
+    delete: 'Delete',
+    edit: 'Edit',
 
     // form labels
     date  : "Date: ",

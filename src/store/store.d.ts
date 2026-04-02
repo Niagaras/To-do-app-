@@ -1,5 +1,5 @@
 import {ILang} from '../assets/lang/lang';
-import { EditState } from '../pages/todo/models/todo.model';
+import { EditState } from '../pages/todo/todo';
 
 export interface IState {
     loader: boolean;

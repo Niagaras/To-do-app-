@@ -1,6 +1,6 @@
-import { Props } from '../models/todo.model';
+import { Props } from './todo';
 import { useStyles } from './todo.styles';
-import TaskItem from './TaskItem';
+import TaskItem from './item.component';
 
 const Column = ({ title, status, tasks }: Props) => {
     const classes = useStyles();
