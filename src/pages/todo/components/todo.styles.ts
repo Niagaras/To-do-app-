@@ -6,6 +6,20 @@ export const useStyles = createUseStyles({
         gap: '20px',
         padding: '20px',
     },
+    submitButton: {
+        backgroundColor: 'green',
+        color: 'white', 
+        padding: '5px 10px',
+        borderRadius: '5px',
+        cursor: 'pointer'
+    },
+    button: {
+        backgroundColor: 'red',
+        color: 'white', 
+        padding: '5px 10px', 
+        borderRadius: '5px', 
+        cursor: 'pointer' 
+    },
     column: {
         flex: 1,
         padding: '10px',

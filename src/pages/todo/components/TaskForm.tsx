@@ -6,6 +6,7 @@ import { Task, TaskStatus } from '../models/todo.model';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEditingTask } from '../../../store/store.reducer';
 import { RootState } from '../../../store/store.config';
+import { en } from 'assets/lang/en';
 
 const TaskForm = () => {
     const classes = useStyles();
@@ -72,23 +73,23 @@ const TaskForm = () => {
             <input
                 value={title}
                 type="text"
-                placeholder="Task Title"
+                placeholder={en.task_title}
                 required
                 onChange={(e) => setTitle(e.target.value)}
             />
             <textarea
                 value={description}
-                placeholder="Task Description"
+                placeholder={en.task_description}
                 required
                 onChange={(e) => setDescription(e.target.value)}
             />
             <select value={status} onChange={(e) => setStatus(e.target.value as TaskStatus)}>
-                <option value="todo">To-do</option>
-                <option value="in-progress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="todo">{en.status_todo}</option>
+                <option value="in-progress">{en.status_in_progress}</option>
+                <option value="done">{en.status_done}</option>
             </select>
             <label>
-                Date:
+                {en.date}
                 <input
                     value={date}
                     type="date"
@@ -99,16 +100,16 @@ const TaskForm = () => {
             <div className={classes.actions}>
                 <button
                     type="submit"
-                    style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer' }}
+                    className={classes.submitButton}
                 >
-                    {editingTask ? 'Save' : 'Add'}
+                    {editingTask ? en.save : en.add}
                 </button>
                 <button
                     type="button"
-                    style={{ backgroundColor: 'red', color: 'white', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer' }}
+                    className={classes.button}
                     onClick={() => dispatch(setEditingTask(null))}
                 >
-                    Cancel Task
+                   {en.cancel}
                 </button>
             </div>
         </form>

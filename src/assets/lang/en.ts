@@ -15,4 +15,19 @@ export const en = {
 
     //components
     login_sign_in_button: 'Sign in',
+
+    // status
+    status_todo: 'To-do',
+    status_in_progress: 'In Progress',
+    status_done: 'Done',
+
+    // task form
+    add: 'Add',
+    save: 'Save',
+
+    // form labels
+    date  : "Date: ",
+    cancel : "Cancel",
+    task_title: "Task Title",
+    task_description: "Task Description",
 };
