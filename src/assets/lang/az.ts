@@ -16,4 +16,29 @@ export const az = {
     login_sign_in_button: 'Daxil ol',
     login_title: 'Daxil ol',
     login_subtitle: 'Davam etmək üçün hesabınıza daxil olun.',
+
+    // status
+    status_todo: 'Ediləcəklər',
+    status_in_progress: 'İcra edilir',
+    status_done: 'Bitti',
+
+    // task form
+    add: 'Əlavə et',
+    save: 'Yadda saxla',
+    delete: 'Sil',
+    edit: 'Düzəliş et',
+
+    // form labels
+    date: 'Tarix: ',
+    cancel: 'Ləğv et',
+    task_title: 'Tapşırığın Başlığı',
+    task_description: 'Tapşırığın Təsviri',
+
+    // todo app
+    loading: 'Yüklənir...',
+    error_loading_tasks: 'Tapşırıqları yükləyərkən xəta baş verdi.',
+    my_todo_app: 'Mənim Todo Tətbiqim',
+    todo: 'Ediləcəklər',
+    in_progress: 'İcra edilir',
+    done: 'Bitti',
 };

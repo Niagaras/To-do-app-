@@ -1,18 +1,15 @@
 import React from 'react';
 import { ISimpleInputProps } from './simple-input.d';
+import { useStyles } from './simple-input.styles';
 
 const SimpleInput: React.FC<ISimpleInputProps> = ({ label, style, ...props }) => {
+    const classes = useStyles();
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, ...style }}>
+        <div className={classes.inputContainer} style={style}>
             {label && <label>{label}</label>}
             <input
+                className={classes.input}
                 {...props}
-                style={{
-                    padding: '8px 10px',
-                    border: '1px solid #d1d5db',
-                    borderRadius: '6px',
-                    fontSize: 14,
-                }}
             />
         </div>
     );

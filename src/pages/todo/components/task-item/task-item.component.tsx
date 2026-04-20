@@ -1,16 +1,12 @@
-import { Task } from './todo';
-import { useStyles } from './todo.styles';
-import { useDeleteTask } from './actions/useTaskMutations';
+import { useStyles } from '../../todo.styles';
+import { useDeleteTask } from '../../actions/useTaskMutations';
 import { useDispatch } from 'react-redux';
-import { setEditingTask } from '../../store/store.reducer';
+import { setEditingTask } from '../../../../store/store.reducer';
 import { en } from 'assets/lang/en';
-import Button from '../../core/shared/button/button.component';
+import Button from '../../../../core/shared/button/button.component';
+import { ITaskItemProps } from './task-item.d';
 
-interface Props {
-    task: Task;
-}
-
-const TaskItem = ({ task }: Props) => {
+const TaskItem = ({ task }: ITaskItemProps) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const deleteTaskMutation = useDeleteTask();

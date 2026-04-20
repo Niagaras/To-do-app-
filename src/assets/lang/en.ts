@@ -32,4 +32,12 @@ export const en = {
     cancel : "Cancel",
     task_title: "Task Title",
     task_description: "Task Description",
+
+    // todo app
+    loading: 'Loading...',
+    error_loading_tasks: 'An error occurred while loading tasks.',
+    my_todo_app: 'My Todo App',
+    todo: 'Todo',
+    in_progress: 'In Progress',
+    done: 'Done',
 };

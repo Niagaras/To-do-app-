@@ -22,44 +22,28 @@ export const useStyles = createUseStyles({
         color: colors.alertDanger,
         textAlign: 'center',
     },
-    submitButton: {
-        backgroundColor: 'green',
-        color: 'white', 
-        padding: '5px 10px',
-        borderRadius: '5px',
-        cursor: 'pointer'
-    },
-    button: {
-        backgroundColor: 'red',
-        color: 'white', 
-        padding: '5px 10px', 
-        borderRadius: '5px', 
-        cursor: 'pointer' 
-    },
-    editButton: {
-        backgroundColor: 'yellow', 
-        padding: '5px 10px', 
-        borderRadius: '5px', 
-        cursor: 'pointer'
-    },
     column: {
         flex: 1,
         padding: '10px',
         minHeight: '300px',
-        border: '1px solid #3806ff',
+        border: `1px solid ${colors.main}`,
         borderRadius: '15px',
     },
     columnHeader: {
-        backgroundColor: '#b99bff',
+        backgroundColor: colors.alertPrimary,
         padding: '10px',
         borderRadius: '15px',
     },
+    columnTitle: {
+        margin: '0',
+        textAlign: 'center',
+    },
     taskItem: {
-        border: '2px solid #0095ff',
+        border: `2px solid ${colors.infoButtonColor}`,
         borderRadius: '10px',
         padding: '10px',
         marginTop: '10px',
-        backgroundColor: '#e6fbff',
+        backgroundColor: colors.alertInfo,
     },
     taskTitle: {
         fontWeight: 'bold',
@@ -68,12 +52,12 @@ export const useStyles = createUseStyles({
     },
     taskDate: {
         fontSize: '12px',
-        color: '#888',
+        color: colors.txtLight,
         marginBottom: '8px'
     },
     taskDesc: {
         fontSize: '14px',
-        color: '#555',
+        color: colors.text,
         marginBottom: '10px'
     },
     actions: {
@@ -92,13 +76,13 @@ export const useStyles = createUseStyles({
     taskStatus: {
         padding: '4px 8px',
         borderRadius: '5px',
-        border: '2px solid #ffffff',
+        border: `2px solid ${colors.white}`,
         fontSize: '10px',
-        backgroundColor: '#a5f1ff',
+        backgroundColor: colors.tableHeaderBgColor,
         fontWeight: 'bold',
     },
     scrollable: {
         maxHeight: '600px',
         overflowY: 'auto',
     }
-});
+});
